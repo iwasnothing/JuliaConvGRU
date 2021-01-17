@@ -1,0 +1,4 @@
+name = "ConvGRU"
+uuid = "3e016418-90e7-4549-84f8-38c1e42f2207"
+authors = ["matthew <iwasnothing@gmail.com>"]
+version = "0.1.0"
