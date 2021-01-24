@@ -1,0 +1,4 @@
+name = "TradeAPI"
+uuid = "c0095e52-a479-476f-bc54-3cccc04d9c53"
+authors = ["matthew <iwasnothing@gmail.com>"]
+version = "0.1.0"
