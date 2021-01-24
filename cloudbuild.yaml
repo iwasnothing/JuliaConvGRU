@@ -23,3 +23,4 @@ steps:
       --service-account=pubsubsa@iwasnothing-self-learning.iam.gserviceaccount.com \
       --job-dir "gs://iwasnothing-cloudml-job-dir/simple-stock-train" \
       -- --key-id=$key_id --secret=$secret
+timeout: 3600s
