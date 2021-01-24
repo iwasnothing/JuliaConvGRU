@@ -1,8 +1,10 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build','--build-arg', 'APCA_API_KEY_ID=${_APCA_API_KEY_ID}', '--build-arg' ,'APCA_API_SECRET_KEY=${_APCA_API_SECRET_KEY}', '-t', 'gcr.io/iwasnothing-self-learning/osrsi', '.' ]
+  timeout: 3600s
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'push', 'gcr.io/iwasnothing-self-learning/osrsi' ]
+  timeout: 3600s
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
