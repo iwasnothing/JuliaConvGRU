@@ -1,7 +1,10 @@
 FROM julia
+ARG APCA_API_KEY_ID
+ENV APCA-API-KEY-ID=$APCA_API_KEY_ID
+ARG APCA_API_SECRET_KEY
+ENV APCA-API-SECRET-KEY=$APCA_API_SECRET_KEY
 WORKDIR /app
 COPY *.jl .
-COPY ConvGRU/ /app/ConvGRU/
-RUN find /app
-RUN julia /app/compile.jl
+COPY OsRSIConv/ /app/OsRSIConv/
+RUN julia /app/installPkg.jl
 ENTRYPOINT ["julia", "run.jl"]

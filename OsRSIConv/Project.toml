@@ -1,0 +1,4 @@
+name = "OsRSIConv"
+uuid = "96985222-94fb-4572-aef8-be4c18e2ae3a"
+authors = ["matthew <iwasnothing@gmail.com>"]
+version = "0.1.0"

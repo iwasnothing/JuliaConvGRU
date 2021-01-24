@@ -1,16 +1,22 @@
-push!(LOAD_PATH, "ConvGRU/");
-using ConvGRU
-Base.compilecache(Base.PkgId(ConvGRU))
-list=["gbtc","2840.HK","GLD","SQ","BLOK","BLCN"]
+push!(LOAD_PATH, "OsRSIConv/");
 using DataFrames
-result = DataFrame(symbol=String[],loss=Float32[],time=Float64[])
+using OsRSIConv
+push!(LOAD_PATH, "TradeAPI/");
+using TradeAPI
+
+list = ["FB","AAPL","AMZN","GOOG","NFLX","SQ","MTCH","AYX","ROKU","TTD"]
+
+result = DataFrame[]
 
 for sym in list
     tstart = time()
-    loss = ConvGRU.mainTest(sym)
+    df = OsRSIConv.trainPredict(sym)
     tend=time()
     et=tend-tstart
-    push!(result,(sym,loss,et))
+    push!(result,df)
+    if df[1,:accuracy] > 0.55 && df[1,:future] > 0
+        TradeAPI.placeOrder(sym)
+    end
 end
 
-print(result)
+print(vcat(result))
