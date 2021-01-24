@@ -6,5 +6,5 @@ ENV APCA-API-SECRET-KEY=$APCA_API_SECRET_KEY
 WORKDIR /app
 COPY *.jl /app/
 COPY OsRSIConv/ /app/OsRSIConv/
-RUN julia /app/installPkg.jl
+COPY TradeAPI/  /app/TradeAPI/
 ENTRYPOINT ["julia", "run.jl"]
