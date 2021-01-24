@@ -29,3 +29,5 @@ using JSON
 
 push!(LOAD_PATH, "OsRSIConv/");
 using OsRSIConv
+push!(LOAD_PATH, "TradeAPI/");
+using TradeAPI

@@ -7,4 +7,5 @@ WORKDIR /app
 COPY *.jl /app/
 COPY OsRSIConv/ /app/OsRSIConv/
 COPY TradeAPI/  /app/TradeAPI/
+RUN julia installPkg.jl
 ENTRYPOINT ["julia", "run.jl"]

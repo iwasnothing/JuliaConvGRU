@@ -1,4 +1,13 @@
 module TradeAPI
+using Pkg
+Pkg.update()
+
+
+pkgList = ["Sockets","DataFramesMeta","CSV","Flux","HTTP","JSON","DataFrames","Plots","TimeSeries","Hyperopt","JSON"]
+for pkg in pkgList
+    Pkg.add(pkg)  
+end
+
 using HTTP
 using JSON
 using DataFrames
