@@ -46,7 +46,7 @@ function placeOrder(sym::String)
     @show rsp
     @show rsp["last"]["askprice"]
     p1 = rsp["last"]["askprice"]
-    spread = 0.1
+    spread = 0.4
     @show p1*(1-spread)
     url_query = "https://paper-api.alpaca.markets/v2/orders"
     params =  Dict(
