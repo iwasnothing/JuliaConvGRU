@@ -36,6 +36,9 @@ for sym in list
     tend=time()
     et=tend-tstart
     push!(result,df)
+    bucket = "gs://iwasnothing-cloudml-job-dir/"
+    file = "plot-" * sym * ".png"
+    run(`/app/google-cloud-sdk/bin/gsutil cp $file $bucket`)
     if df[1,:accuracy] > 0.55 && df[1,:future] > 0
         TradeAPI.placeOrder(sym)
     end
