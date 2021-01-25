@@ -378,6 +378,7 @@ function trainPredict(sym::String)
 end
 
 export trainPredict
-precompile(trainPredict, (String,)) 
-
+export hyperTune
+#precompile(trainPredict, (String,)) 
+#precompile(hyperTune, (String,))
 end # module
