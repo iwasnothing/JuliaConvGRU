@@ -1,4 +1,12 @@
 steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+    - '-eEuo'
+    - 'pipefail'
+    - '-c'
+    - |-
+      ./delete_images.sh
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build','--build-arg', 'APCA_API_KEY_ID=${_APCA_API_KEY_ID}', '--build-arg' ,'APCA_API_SECRET_KEY=${_APCA_API_SECRET_KEY}', '-t', 'gcr.io/iwasnothing-self-learning/osrsi', '.' ]
   timeout: 3600s
@@ -14,17 +22,10 @@ steps:
     - |-
       ts=`date +%Y%m%d%H%M`
       job_id="julia_osrsi_stock_training_$ts"
-      
+
       gcloud ai-platform jobs submit training $job_id \
       --region "us-central1" \
       --master-image-uri=gcr.io/iwasnothing-self-learning/osrsi:latest \
       --service-account=pubsubsa@iwasnothing-self-learning.iam.gserviceaccount.com 
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args:
-    - '-eEuo'
-    - 'pipefail'
-    - '-c'
-    - |-
-      ./delete_images.sh
+
 timeout: 3600s
